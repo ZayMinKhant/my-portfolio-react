@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { DarkModeContext } from './DarkModeContextContext';
 
 export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const toggleDarkMode = () => {
     setDarkMode((prev) => {
@@ -16,7 +16,7 @@ export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
     } else {

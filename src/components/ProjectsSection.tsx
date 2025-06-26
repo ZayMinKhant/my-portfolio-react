@@ -7,32 +7,32 @@ type ProjectTitle = 'GenAI Insights Portal' | 'Collaborative AI Platform' | 'Boo
 // Import project images
 const projectImages: Record<ProjectTitle, string[]> = {
   'GenAI Insights Portal': [
-    '/src/assets/projects/genai-insights-1.png',
-    '/src/assets/projects/genai-insight-2.png',
-    '/src/assets/projects/gen-ai-insight-3.png'
+    '/projects/genai-insights-1.png',
+    '/projects/genai-insight-2.png',
+    '/projects/gen-ai-insight-3.png'
   ],
   'Collaborative AI Platform': [
-    '/src/assets/projects/collaborative-ai-1.png',
-    '/src/assets/projects/collaborative-ai-2.png',
-    '/src/assets/projects/collaborative-ai-3.png',
-    '/src/assets/projects/collaborative-ai-4.png',
-    '/src/assets/projects/collaborative-ai-5.png',
-    '/src/assets/projects/collaborative-ai-6.png',
-    '/src/assets/projects/collaborative-ai--7.png'
+    '/projects/collaborative-ai-1.png',
+    '/projects/collaborative-ai-2.png',
+    '/projects/collaborative-ai-3.png',
+    '/projects/collaborative-ai-4.png',
+    '/projects/collaborative-ai-5.png',
+    '/projects/collaborative-ai-6.png',
+    '/projects/collaborative-ai--7.png'
   ],
   'Bookshelf Platform': [
-    '/src/assets/projects/book-shelf-1.png',
-    '/src/assets/projects/book-shelf-2.png'
+    '/projects/book-shelf-1.png',
+    '/projects/book-shelf-2.png'
   ],
   'Ameo Saga': [
-    '/src/assets/projects/ameo-saga-1.png',
-    '/src/assets/projects/ameo-saga-2.png',
-    '/src/assets/projects/ameo-saga-3.png',
-    '/src/assets/projects/ameo-saga-4.png',
-    '/src/assets/projects/ameo-saga-5.png',
-    '/src/assets/projects/ameo-saga-6.png',
-    '/src/assets/projects/ameo-saga-7.png',
-    '/src/assets/projects/ameo-saga-8.png'
+    '/projects/ameo-saga-1.png',
+    '/projects/ameo-saga-2.png',
+    '/projects/ameo-saga-3.png',
+    '/projects/ameo-saga-4.png',
+    '/projects/ameo-saga-5.png',
+    '/projects/ameo-saga-6.png',
+    '/projects/ameo-saga-7.png',
+    '/projects/ameo-saga-8.png'
   ]
 };
 
