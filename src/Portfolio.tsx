@@ -6,12 +6,12 @@ import AboutSection from './components/AboutSection';
 import ProjectsSection from './components/ProjectsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import ClickSpark from './components/ClickSpark';
 import type { VisibilityState } from './types';
 
 const Portfolio: React.FC = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setActiveSection] = useState<string>('home');
+  const [activeSection, setActiveSection] = useState<string>('home');
   const [isVisible, setIsVisible] = useState<VisibilityState>({});
 
   useEffect(() => {
@@ -38,21 +38,47 @@ const Portfolio: React.FC = () => {
   }, []);
 
   const scrollToSection = (sectionId: string): void => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navbarHeight = 64; // 4rem or h-16
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
-    <div className="min-h-screen w-full overflow-hidden relative">
-      <div className={`absolute inset-0 transition-colors duration-500 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`} />
-      <div className="relative w-full">
-        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} scrollToSection={scrollToSection} />
-        <HomeSection darkMode={darkMode} isVisible={isVisible.home} scrollToSection={scrollToSection} />
-        <AboutSection darkMode={darkMode} isVisible={isVisible.about} />
-        <ProjectsSection darkMode={darkMode} isVisible={isVisible.projects} />
-        <ContactSection darkMode={darkMode} isVisible={isVisible.contact} />
-        <Footer darkMode={darkMode} />
+    <ClickSpark
+      sparkColor={darkMode ? '#60A5FA' : '#818CF8'}
+      sparkSize={6}
+      sparkRadius={30}
+      sparkCount={10}
+      duration={500}
+      extraScale={1.2}
+    >
+      <div className="min-h-screen w-full overflow-hidden relative">
+        <div className={`absolute inset-0 transition-colors duration-500 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`} />
+        <div className="relative w-full">
+          <Navbar 
+            darkMode={darkMode} 
+            toggleDarkMode={toggleDarkMode} 
+            scrollToSection={scrollToSection} 
+            activeSection={activeSection}
+          />
+          <div className="pt-16"> {/* Add padding top to account for fixed navbar */}
+            <HomeSection darkMode={darkMode} isVisible={isVisible.home} scrollToSection={scrollToSection} />
+            <AboutSection darkMode={darkMode} isVisible={isVisible.about} />
+            <ProjectsSection darkMode={darkMode} isVisible={isVisible.projects} />
+            <ContactSection darkMode={darkMode} isVisible={isVisible.contact} />
+            <Footer darkMode={darkMode} />
+          </div>
         </div>
-    </div>
+                    </div>
+    </ClickSpark>
   );
 };
 

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { ChevronDown } from 'lucide-react';
 import type { SectionProps } from '../types';
 import ThreeScene from './ThreeScene';
-import ProfileCard from './ProfileCard';
+
+const ProfileCard = lazy(() => import('./ProfileCard'));
 
 interface HomeSectionProps extends SectionProps {
   scrollToSection: (sectionId: string) => void;
@@ -58,20 +59,24 @@ const HomeSection: React.FC<HomeSectionProps> = ({ darkMode, isVisible, scrollTo
 
             {/* Profile Card */}
             <div className="hidden lg:block lg:max-w-md xl:max-w-lg mx-auto">
-              <ProfileCard
-                name="Zay Min Khant"
-                title="Full Stack Developer"
-                handle="zayminkhant"
-                status="Available for Projects"
-                contactText="Contact Me"
-                avatarUrl="/images/avatar.png"
-                iconUrl="/images/code-icon.png"
-                grainUrl="/images/code-icon.png"
-                showUserInfo={true}
-                enableTilt={true}
-                darkMode={darkMode}
-                onContactClick={() => scrollToSection('contact')}
-              />
+              <Suspense fallback={<div className="w-full h-96 rounded-2xl bg-gradient-to-r from-blue-400/10 to-purple-500/10 animate-pulse" />}>
+                {isVisible && (
+                  <ProfileCard
+                    name="Zay Min Khant"
+                    title="Full Stack Developer"
+                    handle="zayminkhant"
+                    status="Available for Projects"
+                    contactText="Contact Me"
+                    avatarUrl="/images/avatar.png"
+                    iconUrl="/images/code-icon.png"
+                    grainUrl="/images/code-icon.png"
+                    showUserInfo={true}
+                    enableTilt={true}
+                    darkMode={darkMode}
+                    onContactClick={() => scrollToSection('contact')}
+                  />
+                )}
+              </Suspense>
             </div>
           </div>
         </div>
