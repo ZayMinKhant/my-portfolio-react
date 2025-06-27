@@ -36,6 +36,7 @@ const ANIMATION_CONFIG = {
   INITIAL_DURATION: 1500,
   INITIAL_X_OFFSET: 70,
   INITIAL_Y_OFFSET: 60,
+  THROTTLE_MS: 16, // ~60fps throttle
 } as const;
 
 const clamp = (value: number, min = 0, max = 100): number =>
@@ -77,6 +78,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const lastUpdateTime = useRef(0);
+  const lastPointerPosition = useRef({ x: 0, y: 0 });
 
   const animationHandlers = useMemo(() => {
     if (!enableTilt) return null;
@@ -98,14 +101,18 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       const centerX = percentX - 50;
       const centerY = percentY - 50;
 
-      // Use transform3d for better performance
+      // Batch style updates and use CSS transform3d
+      const transform = `
+        perspective(1000px) 
+        rotateX(${round(-(centerX / 5))}deg) 
+        rotateY(${round(centerY / 4)}deg) 
+        translateZ(0)
+      `;
+
+      // Use CSS custom properties only for essential values
       wrap.style.setProperty("--pointer-x", `${percentX}%`);
       wrap.style.setProperty("--pointer-y", `${percentY}%`);
-      wrap.style.setProperty("--background-x", `${adjust(percentX, 0, 100, 35, 65)}%`);
-      wrap.style.setProperty("--background-y", `${adjust(percentY, 0, 100, 35, 65)}%`);
-      wrap.style.setProperty("--pointer-from-center", `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`);
-      wrap.style.transform = `perspective(1000px) rotateX(${round(-(centerX / 5))}deg) rotateY(${round(centerY / 4)}deg)`;
-      wrap.style.willChange = "transform";
+      wrap.style.transform = transform;
     };
 
     const createSmoothAnimation = (
@@ -131,12 +138,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 
         if (progress < 1) {
           rafId = requestAnimationFrame(animationLoop);
-        } else {
-          // Reset will-change after animation
-          wrap.style.willChange = "auto";
         }
       };
 
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
       rafId = requestAnimationFrame(animationLoop);
     };
 
@@ -156,18 +163,27 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     (event: PointerEvent) => {
       const card = cardRef.current;
       const wrap = wrapRef.current;
+      const now = performance.now();
 
       if (!card || !wrap || !animationHandlers) return;
 
-      // Throttle pointer move updates
-      if (!event.timeStamp || event.timeStamp % 2 === 0) {
-        const rect = card.getBoundingClientRect();
-        animationHandlers.updateCardTransform(
-          event.clientX - rect.left,
-          event.clientY - rect.top,
-          card,
-          wrap
-        );
+      // Store current pointer position
+      lastPointerPosition.current = {
+        x: event.clientX - card.getBoundingClientRect().left,
+        y: event.clientY - card.getBoundingClientRect().top
+      };
+
+      // Throttle updates
+      if (now - lastUpdateTime.current >= ANIMATION_CONFIG.THROTTLE_MS) {
+        requestAnimationFrame(() => {
+          animationHandlers.updateCardTransform(
+            lastPointerPosition.current.x,
+            lastPointerPosition.current.y,
+            card,
+            wrap
+          );
+        });
+        lastUpdateTime.current = now;
       }
     },
     [animationHandlers]
@@ -272,7 +288,10 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     <div
       ref={wrapRef}
       className={`pc-card-wrapper ${darkMode ? 'dark' : ''} ${className}`.trim()}
-      style={cardStyle}
+      style={{
+        ...cardStyle,
+        transform: 'translateZ(0)', // Enable hardware acceleration
+      }}
     >
       <section ref={cardRef} className="pc-card">
         <div className="pc-inside">

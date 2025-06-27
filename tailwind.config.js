@@ -8,13 +8,17 @@ export default {
     theme: {
       extend: {
         colors: {
-          warm: {
-            100: '#FFF8F1',
-            200: '#FEEBCB',
-            300: '#FBD38D',
-            400: '#F6AD55',
-            500: '#ED8936',
+          primary: 'var(--color-primary)',
+          accent: 'var(--color-accent)',
+          text: {
+            default: 'var(--color-text-default)',
+            secondary: 'var(--color-text-secondary)',
           },
+          background: {
+            page: 'var(--color-background-page)',
+            card: 'var(--color-background-card)',
+          },
+          border: 'var(--color-border)',
         },
       },
     },

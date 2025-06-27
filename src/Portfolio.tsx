@@ -53,7 +53,7 @@ const Portfolio: React.FC = () => {
 
   return (
     <ClickSpark
-      sparkColor={darkMode ? '#60A5FA' : '#818CF8'}
+      sparkColor="var(--color-accent)"
       sparkSize={6}
       sparkRadius={30}
       sparkCount={10}
@@ -61,7 +61,7 @@ const Portfolio: React.FC = () => {
       extraScale={1.2}
     >
       <div className="min-h-screen w-full overflow-hidden relative">
-        <div className={`absolute inset-0 transition-colors duration-500 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`} />
+        <div className="absolute inset-0 transition-colors duration-500 bg-background-page" />
         <div className="relative w-full">
           <Navbar 
             darkMode={darkMode} 

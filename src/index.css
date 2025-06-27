@@ -9,13 +9,31 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  
+  /* Light Mode Colors */
+  --color-primary: #ED8936; /* warm-500 */
+  --color-accent: #60A5FA; /* blue-400 */
+  --color-text-default: #1F2937; /* gray-900 */
+  --color-text-secondary: #4B5563; /* gray-600 */
+  --color-background-page: #F9FAFB; /* gray-50 */
+  --color-background-card: #FFFFFF; /* white */
+  --color-border: #E5E7EB; /* gray-200 */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.dark {
+  /* Dark Mode Colors */
+  --color-primary: #F6AD55; /* warm-400 */
+  --color-accent: #818CF8; /* indigo-400 */
+  --color-text-default: #F9FAFB; /* gray-50 */
+  --color-text-secondary: #D1D5DB; /* gray-300 */
+  --color-background-page: #111827; /* gray-900 */
+  --color-background-card: #1F2937; /* gray-800 */
+  --color-border: #374151; /* gray-700 */
 }
 
 a {

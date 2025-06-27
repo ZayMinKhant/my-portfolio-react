@@ -13,21 +13,21 @@ const skills: Skill[] = [
 
 const AboutSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
   return (
-    <section id="about" className={`w-full py-20 ${darkMode ? 'bg-gray-800' : 'bg-white'} transition-colors duration-500`}>
+    <section id="about" className="w-full py-20 bg-background-page transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h2 className={`text-4xl font-bold text-center mb-16 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+          <h2 className="text-4xl font-bold text-center mb-16 text-text-default">
             About Me
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-700' : 'bg-gray-50'} transform hover:scale-105 transition-all duration-300`}>
+              <div className="p-8 rounded-2xl bg-background-card transform hover:scale-105 transition-all duration-300">
                 <User className="w-12 h-12 text-orange-500 mb-4" />
-                <h3 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <h3 className="text-2xl font-bold mb-4 text-text-default">
                   Full Stack Developer
                 </h3>
-                <p className={`text-lg mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p className="text-lg mb-6 text-text-secondary">
                   With 5+ years of experience, I specialize in building complete web applications 
                   from concept to deployment. My expertise spans frontend frameworks, backend systems, 
                   and cloud infrastructure.
@@ -44,7 +44,7 @@ const AboutSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
             </div>
             
             <div>
-              <h3 className={`text-2xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              <h3 className="text-2xl font-bold mb-8 text-text-default">
                 Technical Skills
               </h3>
               <div className="space-y-6">
@@ -55,15 +55,15 @@ const AboutSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
                         <div className="text-blue-500 group-hover:scale-110 transition-transform duration-200">
                           {skill.icon}
                         </div>
-                        <span className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                        <span className="font-semibold text-text-default">
                           {skill.name}
                         </span>
                       </div>
-                      <span className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                      <span className="text-sm text-text-secondary">
                         {skill.level}%
                       </span>
                     </div>
-                    <div className={`w-full h-2 rounded-full ${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
+                    <div className="w-full h-2 rounded-full bg-border">
                       <div
                         className="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full transition-all duration-1000 ease-out"
                         style={{ width: isVisible ? `${skill.level}%` : '0%' }}

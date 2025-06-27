@@ -13,11 +13,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({ darkMode, isVisible, scrollTo
   return (
     <section id="home" className="min-h-screen w-full flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-b ${
-        darkMode 
-          ? 'from-gray-900 via-gray-800/50 to-gray-900/50' 
-          : 'from-gray-50 via-gray-100/50 to-gray-50/50'
-      } transition-colors duration-500`}></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-background-page via-background-page/50 to-background-page/50 transition-colors duration-500"></div>
       
       {/* 3D Scene */}
       <ThreeScene darkMode={darkMode} />
@@ -27,13 +23,13 @@ const HomeSection: React.FC<HomeSectionProps> = ({ darkMode, isVisible, scrollTo
           <div className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             {/* Text Content */}
             <div className="text-center lg:text-left">
-              <h1 className={`text-5xl md:text-7xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 text-text-default">
                 Hi, I'm <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Zay Min Khant</span>
               </h1>
-              <p className={`text-xl md:text-2xl mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              <p className="text-xl md:text-2xl mb-8 text-text-secondary">
                 Crafting intelligent and elegant solutions
               </p>
-              <p className={`text-lg mb-12 max-w-2xl mx-auto lg:mx-0 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
+              <p className="text-lg mb-12 max-w-2xl mx-auto lg:mx-0 text-text-secondary">
                 Full Stack Developer with 5+ years of experience building scalable web applications, 
                 AI-powered platforms, and modern user experiences.
               </p>
@@ -46,11 +42,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({ darkMode, isVisible, scrollTo
                 </button>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className={`px-8 py-3 border-2 rounded-full font-semibold transform hover:scale-105 transition-all duration-200 backdrop-blur-sm ${
-                    darkMode 
-                      ? 'border-gray-600 text-gray-300 hover:bg-gray-800/50' 
-                      : 'border-gray-300 text-gray-700 hover:bg-gray-100/50'
-                  }`}
+                  className="px-8 py-3 border-2 rounded-full font-semibold transform hover:scale-105 transition-all duration-200 backdrop-blur-sm border-border text-text-secondary hover:bg-background-card/50"
                 >
                   Get In Touch
                 </button>

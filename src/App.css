@@ -38,3 +38,33 @@
 .read-the-docs {
   color: #888;
 }
+
+@keyframes navbar-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-navbar-fade {
+  animation: navbar-fade 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+}
+
+@keyframes project-fade {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-project-fade {
+  animation: project-fade 1s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+}
