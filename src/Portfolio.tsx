@@ -74,7 +74,7 @@ const Portfolio: React.FC = () => {
             <AboutSection darkMode={darkMode} isVisible={isVisible.about} />
             <ProjectsSection darkMode={darkMode} isVisible={isVisible.projects} />
             <ContactSection darkMode={darkMode} isVisible={isVisible.contact} />
-            <Footer darkMode={darkMode} />
+            <Footer/>
           </div>
         </div>
                     </div>

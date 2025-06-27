@@ -11,7 +11,7 @@ const skills: Skill[] = [
   { name: 'TypeScript', icon: <Code className="w-6 h-6" />, level: 90 }
 ];
 
-const AboutSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
+const AboutSection: React.FC<SectionProps> = ({ isVisible }) => {
   return (
     <section id="about" className="w-full py-20 bg-background-page transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,4 +80,4 @@ const AboutSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
   );
 };
 
-export default AboutSection; 
+export default AboutSection;

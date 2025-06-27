@@ -67,7 +67,7 @@ const projects: Project[] = [
   }
 ];
 
-const ProjectCard: React.FC<{ project: Project; darkMode: boolean }> = ({ project, darkMode }) => {
+const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = projectImages[project.title as ProjectTitle] || [];
 
@@ -157,7 +157,7 @@ const ProjectCard: React.FC<{ project: Project; darkMode: boolean }> = ({ projec
   );
 };
 
-const ProjectsSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
+const ProjectsSection: React.FC<SectionProps> = ({ isVisible }) => {
   return (
     <section id="projects" className="w-full py-20 bg-background-page transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -167,7 +167,7 @@ const ProjectsSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {projects.map((project) => (
-              <ProjectCard key={project.title} project={project} darkMode={darkMode} />
+              <ProjectCard key={project.title} project={project} />
             ))}
           </div>
         </div>

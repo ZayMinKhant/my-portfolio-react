@@ -2,7 +2,7 @@ import React from 'react';
 import { Mail, MapPin, Github, Linkedin, Send } from 'lucide-react';
 import type { SectionProps } from '../types';
 
-const ContactSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
+const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
   return (
     <section id="contact" className="w-full py-20 bg-background-page transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,4 +105,4 @@ const ContactSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
   );
 };
 
-export default ContactSection; 
+export default ContactSection;
