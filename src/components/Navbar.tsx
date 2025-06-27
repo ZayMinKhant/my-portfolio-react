@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Menu, X, Linkedin } from 'lucide-react';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -8,7 +8,8 @@ interface NavbarProps {
   activeSection: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, scrollToSection, activeSection }) => {
+const Navbar: React.FC<NavbarProps> = (props) => {
+  const { scrollToSection, activeSection } = props;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   React.useEffect(() => { setMounted(true); }, []);
@@ -55,21 +56,27 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, scrollToSecti
               )}
             </button>
           ))}
-          <button
-            onClick={toggleDarkMode}
-            className={`ml-2 p-2 rounded-full transition-colors duration-200 shadow-md bg-white/30 dark:bg-gray-800/40 text-gray-700 dark:text-yellow-400 hover:scale-110`}
+          <a
+            href="https://www.linkedin.com/in/zayminkhant/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 p-2 rounded-full transition-colors duration-200 shadow-md bg-white/30 dark:bg-gray-800/40 text-blue-600 dark:text-blue-400 hover:scale-110 hover:bg-blue-100 dark:hover:bg-blue-900"
+            aria-label="LinkedIn"
           >
-            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
+            <Linkedin className="w-5 h-5" />
+          </a>
         </div>
         {/* Mobile Navigation Button */}
         <div className="flex md:hidden items-center space-x-2">
-          <button
-            onClick={toggleDarkMode}
-            className={`p-2 mr-2 rounded-full transition-colors duration-200 shadow-md bg-white/30 dark:bg-gray-800/40 text-gray-700 dark:text-yellow-400 hover:scale-110`}
+          <a
+            href="https://www.linkedin.com/in/zayminkhant/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 mr-2 rounded-full transition-colors duration-200 shadow-md bg-white/30 dark:bg-gray-800/40 text-blue-600 dark:text-blue-400 hover:scale-110 hover:bg-blue-100 dark:hover:bg-blue-900"
+            aria-label="LinkedIn"
           >
-            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
+            <Linkedin className="w-5 h-5" />
+          </a>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`p-2 rounded-md text-gray-700 dark:text-gray-200 hover:scale-110 transition-transform`}

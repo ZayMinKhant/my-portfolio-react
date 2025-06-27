@@ -64,8 +64,8 @@ const Portfolio: React.FC = () => {
         <div className="absolute inset-0 transition-colors duration-500 bg-background-page" />
         <div className="relative w-full">
           <Navbar 
-            darkMode={darkMode} 
-            toggleDarkMode={toggleDarkMode} 
+            darkMode={darkMode}
+            toggleDarkMode={toggleDarkMode}
             scrollToSection={scrollToSection} 
             activeSection={activeSection}
           />
