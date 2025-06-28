@@ -39,28 +39,20 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             <button
               key={item}
               onClick={() => scrollToSection(item.toLowerCase())}
-              className={`relative px-4 py-2 rounded-full font-medium transition-all duration-200 focus:outline-none group
+              className={`relative px-4 py-2 rounded-full font-medium transition-all duration-200 focus:outline-none cursor-pointer
                 ${isActive(item)
-                  ? 'bg-gradient-to-r from-blue-400 to-purple-500 text-white shadow-lg scale-105'
-                  : 'text-gray-700 dark:text-gray-200 hover:bg-white/20 dark:hover:bg-gray-800/30 hover:scale-105'}
+                  ? 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg text-text-default shadow-lg'
+                  : 'text-gray-700 dark:text-gray-200 hover:bg-white/40 dark:hover:bg-gray-800/40'}
               `}
-              style={{
-                boxShadow: isActive(item)
-                  ? '0 2px 16px 0 rgba(99,102,241,0.15)'
-                  : undefined,
-              }}
             >
-              <span className="relative z-10">{item}</span>
-              {isActive(item) && (
-                <span className="absolute left-0 top-0 w-full h-full rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-20 z-0 animate-pulse" />
-              )}
+              {item}
             </button>
           ))}
           <a
             href="https://www.linkedin.com/in/zayminkhant/"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 p-2 rounded-full transition-colors duration-200 shadow-md bg-white/30 dark:bg-gray-800/40 text-blue-600 dark:text-blue-400 hover:scale-110 hover:bg-blue-100 dark:hover:bg-blue-900"
+            className="ml-2 p-2 rounded-full transition-all duration-200 bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg shadow-lg hover:scale-110 hover:bg-white/80 dark:hover:bg-gray-800/80 text-text-default cursor-pointer"
             aria-label="LinkedIn"
           >
             <Linkedin className="w-5 h-5" />
@@ -72,14 +64,14 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             href="https://www.linkedin.com/in/zayminkhant/"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 mr-2 rounded-full transition-colors duration-200 shadow-md bg-white/30 dark:bg-gray-800/40 text-blue-600 dark:text-blue-400 hover:scale-110 hover:bg-blue-100 dark:hover:bg-blue-900"
+            className="p-2 mr-2 rounded-full transition-all duration-200 bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg shadow-lg hover:scale-110 hover:bg-white/80 dark:hover:bg-gray-800/80 text-text-default cursor-pointer"
             aria-label="LinkedIn"
           >
             <Linkedin className="w-5 h-5" />
           </a>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`p-2 rounded-md text-gray-700 dark:text-gray-200 hover:scale-110 transition-transform`}
+            className="p-2 rounded-md text-gray-700 dark:text-gray-200 hover:scale-110 transition-transform bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg shadow-lg cursor-pointer"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -97,21 +89,13 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 scrollToSection(item.toLowerCase());
                 setIsMobileMenuOpen(false);
               }}
-              className={`block w-full text-left px-4 py-2 rounded-full font-medium transition-all duration-200 focus:outline-none group
+              className={`block w-full text-left px-4 py-2 rounded-full font-medium transition-all duration-200 focus:outline-none cursor-pointer
                 ${isActive(item)
-                  ? 'bg-gradient-to-r from-blue-400 to-purple-500 text-white shadow-lg scale-105'
-                  : 'text-gray-700 dark:text-gray-200 hover:bg-white/20 dark:hover:bg-gray-800/30 hover:scale-105'}
+                  ? 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg text-text-default shadow-lg'
+                  : 'text-gray-700 dark:text-gray-200 hover:bg-white/40 dark:hover:bg-gray-800/40'}
               `}
-              style={{
-                boxShadow: isActive(item)
-                  ? '0 2px 16px 0 rgba(99,102,241,0.15)'
-                  : undefined,
-              }}
             >
-              <span className="relative z-10">{item}</span>
-              {isActive(item) && (
-                <span className="absolute left-0 top-0 w-full h-full rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-20 z-0 animate-pulse" />
-              )}
+              {item}
             </button>
           ))}
         </div>

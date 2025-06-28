@@ -32,7 +32,6 @@ const SkillMarquee: React.FC<SkillMarqueeProps> = ({ skills, darkMode }) => {
             >
               <div className="relative">
                 <img src={skill.iconPath} alt={skill.name} className="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <span className="text-xs text-text-default text-center font-medium truncate w-full px-2 group-hover:text-blue-400 transition-colors duration-300">{skill.name}</span>
             </div>
@@ -50,7 +49,6 @@ const SkillMarquee: React.FC<SkillMarqueeProps> = ({ skills, darkMode }) => {
             >
               <div className="relative">
                 <img src={skill.iconPath} alt={skill.name} className="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <span className="text-xs text-text-default text-center font-medium truncate w-full px-2 group-hover:text-blue-400 transition-colors duration-300">{skill.name}</span>
             </div>

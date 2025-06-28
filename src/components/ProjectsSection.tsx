@@ -67,7 +67,7 @@ const projects = [
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const images = projectImages[project.title as keyof typeof projectImages];
   return (
-    <div className="group flex flex-col rounded-2xl overflow-hidden shadow-xl border border-white/20 dark:border-gray-700/30 bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:border-blue-400/40 hover:bg-white/60 dark:hover:bg-gray-900/60 animate-project-fade">
+    <div className="group flex flex-col rounded-2xl overflow-hidden shadow-xl border border-white/20 dark:border-gray-700/30 bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:border-gray-300/40 dark:hover:border-gray-600/40 animate-project-fade">
       {/* Project image at the top, aspect ratio preserved, no overlay */}
       <div className="relative w-full aspect-[16/9] bg-black">
         <img src={images[0]} alt={project.title} className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
@@ -75,17 +75,17 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
       {/* Card content below image */}
       <div className="flex-1 flex flex-col p-6">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-lg font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h3 className="text-lg font-bold text-text-default group-hover:text-blue-400 transition-colors duration-300">
             {project.title}
           </h3>
           <a
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white/80 dark:bg-gray-800/80 shadow hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
+            className="p-2 rounded-full bg-white/80 dark:bg-gray-800/80 shadow hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             aria-label="Project external link"
           >
-            <ExternalLink className="w-5 h-5 text-blue-500" />
+            <ExternalLink className="w-5 h-5 text-text-secondary" />
           </a>
         </div>
         <p className="text-base mb-3 text-text-secondary line-clamp-2 group-hover:line-clamp-none transition-all duration-300">{project.description}</p>
@@ -93,7 +93,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           {project.tech.map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-blue-400 to-purple-500 text-white shadow-sm hover:scale-105 transition-transform duration-200"
+              className="px-3 py-1 text-xs font-semibold rounded-full bg-gray-100 dark:bg-gray-800 text-text-default border border-gray-200 dark:border-gray-700 hover:scale-105 transition-transform duration-200"
             >
               {tech}
             </span>
@@ -103,7 +103,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           {project.features.map((feature, i) => (
             <span
               key={i}
-              className="flex items-center gap-1 px-2.5 py-1 text-xs rounded-full bg-white/80 dark:bg-gray-800/80 text-blue-500 font-medium shadow hover:scale-105 transition-transform duration-200 animate-feature-chip"
+              className="flex items-center gap-1 px-2.5 py-1 text-xs rounded-full bg-white/60 dark:bg-gray-800/60 text-text-secondary font-medium shadow-sm hover:scale-105 transition-transform duration-200 animate-feature-chip"
             >
               <Zap className="w-3 h-3" /> {feature}
             </span>
