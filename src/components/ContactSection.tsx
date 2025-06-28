@@ -48,9 +48,14 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
                 <button className="p-3 rounded-full transition-all duration-200 bg-background-card hover:bg-border text-text-secondary hover:text-text-default hover:scale-110 shadow-sm hover:shadow-md">
                   <Github className="w-5 h-5" />
                 </button>
-                <button className="p-3 rounded-full transition-all duration-200 bg-background-card hover:bg-border text-text-secondary hover:text-text-default hover:scale-110 shadow-sm hover:shadow-md">
+                <a 
+                  href="https://www.linkedin.com/in/zay-min-khant/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full transition-all duration-200 bg-background-card hover:bg-border text-text-secondary hover:text-text-default hover:scale-110 shadow-sm hover:shadow-md"
+                >
                   <Linkedin className="w-5 h-5" />
-                </button>
+                </a>
               </div>
             </div>
             
