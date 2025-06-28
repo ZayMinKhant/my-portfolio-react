@@ -1,8 +1,6 @@
-import type { ReactNode } from 'react';
-
 export interface Skill {
   name: string;
-  icon: ReactNode;
+  iconPath: string;
   level: number;
 }
 
@@ -21,4 +19,12 @@ export interface SectionProps {
 
 export interface VisibilityState {
   [key: string]: boolean;
+}
+
+export interface WorkExperience {
+  title: string;
+  company: string;
+  duration: string;
+  type: string;
+  description: string[];
 } 
