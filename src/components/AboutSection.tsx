@@ -28,7 +28,7 @@ const AboutSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
       },
       {
         title: "Frontend Developer",
-        company: "Freelance Organization, Chiang Mai",
+        company: "Freelance",
         duration: "May 2024 - June 2025",
         type: "previous",
         description: [

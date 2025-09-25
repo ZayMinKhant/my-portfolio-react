@@ -25,6 +25,11 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
       title,
       currentIndex: startIndex,
     });
+    
+    images.forEach((imageSrc) => {
+      const img = new Image();
+      img.src = imageSrc;
+    });
   };
 
   const closeGallery = () => {
@@ -91,14 +96,14 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
             {/* Close button */}
             <button
               onClick={closeGallery}
-              className="absolute top-4 right-4 z-10 p-3 rounded-full bg-white/20 hover:bg-white/30 transition-colors backdrop-blur-sm"
+              className="absolute top-4 right-4 z-10 p-3 rounded-full bg-black/50 hover:bg-black/70 transition-colors backdrop-blur-sm border border-white/20 hover:border-white/30"
               aria-label="Close gallery"
             >
               <X className="w-6 h-6 text-white" />
             </button>
 
             {/* Title */}
-            <div className="absolute top-4 left-4 z-10 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm">
+            <div className="absolute top-4 left-4 z-10 px-4 py-2 rounded-full bg-black/50 backdrop-blur-sm border border-white/20">
               <h3 className="text-white text-sm font-medium">{galleryState.title}</h3>
             </div>
 
@@ -108,6 +113,8 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
                 src={galleryState.images[galleryState.currentIndex]}
                 alt={`${galleryState.title} - Image ${galleryState.currentIndex + 1}`}
                 className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                loading="eager"
+                decoding="async"
               />
             </div>
 
@@ -116,7 +123,7 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
               <>
                 <button
                   onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/20 hover:bg-white/30 transition-colors backdrop-blur-sm disabled:opacity-50"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-black/50 hover:bg-black/70 transition-colors backdrop-blur-sm border border-white/20 hover:border-white/30 disabled:opacity-50"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-6 h-6 text-white" />
@@ -124,7 +131,7 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
                 
                 <button
                   onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/20 hover:bg-white/30 transition-colors backdrop-blur-sm disabled:opacity-50"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-black/50 hover:bg-black/70 transition-colors backdrop-blur-sm border border-white/20 hover:border-white/30 disabled:opacity-50"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-6 h-6 text-white" />
@@ -136,7 +143,7 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
             {galleryState.images.length > 1 && (
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
                 {/* Counter */}
-                <div className="px-4 py-2 rounded-full bg-white/20 text-white text-sm backdrop-blur-sm">
+                <div className="px-4 py-2 rounded-full bg-black/50 text-white text-sm backdrop-blur-sm border border-white/20">
                   {galleryState.currentIndex + 1} / {galleryState.images.length}
                 </div>
                 
@@ -147,10 +154,10 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
                       <button
                         key={index}
                         onClick={() => setGalleryState(prev => ({ ...prev, currentIndex: index }))}
-                        className={`w-2 h-2 rounded-full transition-colors ${
+                        className={`w-3 h-3 rounded-full transition-colors border ${
                           index === galleryState.currentIndex
-                            ? 'bg-white'
-                            : 'bg-white/40 hover:bg-white/60'
+                            ? 'bg-white border-white'
+                            : 'bg-white/30 border-white/50 hover:bg-white/50 hover:border-white/70'
                         }`}
                         aria-label={`Go to image ${index + 1}`}
                       />

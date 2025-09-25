@@ -102,7 +102,7 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
                   <div>
                     <p className="font-semibold text-text-default">Location</p>
                     <p className="text-sm text-text-secondary">
-                      Chiang Mai, Thailand
+                      Bangkok, Thailand
                     </p>
                   </div>
                 </div>

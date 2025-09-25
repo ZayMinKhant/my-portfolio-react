@@ -38,7 +38,7 @@ const Portfolio: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToSection = (sectionId: string): void => {
+  const scrollToSection = React.useCallback((sectionId: string): void => {
     const element = document.getElementById(sectionId);
     if (element) {
       const navbarHeight = 64; // 4rem or h-16
@@ -51,17 +51,17 @@ const Portfolio: React.FC = () => {
         behavior: "smooth",
       });
     }
-  };
+  }, []);
 
   return (
     <ImageGalleryProvider>
     <ClickSpark
       sparkColor="var(--color-accent)"
-      sparkSize={6}
-      sparkRadius={30}
-      sparkCount={10}
-      duration={500}
-      extraScale={1.2}
+      sparkSize={4}
+      sparkRadius={20}
+      sparkCount={6}
+      duration={400}
+      extraScale={1.1}
     >
       <div className="min-h-screen w-full overflow-hidden relative">
         <div className="absolute inset-0 transition-colors duration-500 bg-background-page" />

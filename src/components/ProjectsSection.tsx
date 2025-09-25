@@ -38,6 +38,26 @@ const projectImages = {
     "/projects/connect-portal-3.png",
     "/projects/connect-portal-4.png",
   ],
+  "KHub": [
+    "/projects/khub-1.png",
+    "/projects/khub-2.png",
+    "/projects/khub-3.png",
+    "/projects/khub-4.png",
+    "/projects/khub-5.png",
+    "/projects/khub-6.png",
+    "/projects/khub-7.png",
+    "/projects/khub-8.png",
+  ],
+  "KHub Studio": [
+    "/projects/khub-studio-1.png",
+    "/projects/khub-studio-2.png",
+    "/projects/khub-studio-3.png",
+    "/projects/khub-studio-4.png",
+    "/projects/khub-studio-5.png",
+    "/projects/khub-studio-6.png",
+    "/projects/khub-studio-7.png",
+    "/projects/khub-studio-8.png",
+  ],
 };
 
 const projects = [
@@ -114,23 +134,63 @@ const projects = [
     demoUrl: "https://www.connectportal.cloud/",
     role: "Full Stack Developer",
   },
+  {
+    title: "KHub",
+    description:
+      "Comprehensive online learning platform featuring dual interfaces for learners and instructors (Studio), designed to facilitate seamless educational experiences with integrated course management and interactive learning tools.",
+    tech: ["Angular 13", "Flutter", "Python", "DynamoDB"],
+    color: "from-orange-400 to-red-500",
+    features: [
+      "View and enroll in courses",
+      "Payment integration system",
+      "Interactive assignments",
+      "Automated quizzes and assessments",
+      "Discussion forums",
+      "Instructor Studio dashboard",
+    ],
+    demoUrl: "https://www.khub.cloud/",
+    role: "Full Stack Developer",
+  },
+  {
+    title: "KHub Studio",
+    description:
+      "Advanced instructor dashboard and course management platform for KHub, providing comprehensive tools for educators to create, manage, and monitor their educational content with advanced analytics and student progress tracking.",
+    tech: ["Angular 13", "Flutter", "Python (Lambda)", "DynamoDB"],
+    color: "from-purple-400 to-indigo-500",
+    features: [
+      "Create and manage courses",
+      "Assignment grading system",
+      "Class management tools",
+      "Comprehensive admin dashboard",
+      "Learning path creation",
+      "Student progress analytics",
+    ],
+    demoUrl: "https://studio.khub.cloud/",
+    role: "Full Stack Developer (Backend focused)",
+  },
 ];
 
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+const ProjectCard: React.FC<{ project: Project }> = React.memo(({ project }) => {
   const images = projectImages[project.title as keyof typeof projectImages];
   const { openGallery } = useImageGallery();
 
+  const handleImageClick = React.useCallback(() => {
+    openGallery(images, project.title);
+  }, [images, project.title, openGallery]);
+
   return (
-      <div className="group rounded-2xl overflow-hidden shadow-xl border border-white/20 dark:border-gray-700/30 bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg transition-all duration-300 hover:shadow-2xl hover:border-gray-300/40 dark:hover:border-gray-600/40 animate-project-fade">
+      <div className="group rounded-2xl overflow-hidden shadow-xl border border-white/20 dark:border-gray-700/30 bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg transition-all duration-300 hover:shadow-2xl hover:border-gray-300/40 dark:hover:border-gray-600/40 animate-project-fade" style={{ willChange: 'transform, opacity' }}>
         {/* Project image */}
         <div 
           className="relative w-full aspect-[16/9] bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 cursor-pointer"
-          onClick={() => openGallery(images, project.title)}
+          onClick={handleImageClick}
         >
           <img
             src={images[0]}
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
           />
           
           {/* Role badge */}
@@ -217,9 +277,11 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         </div>
       </div>
   );
-};
+});
 
-const ProjectsSection: React.FC<SectionProps> = ({ isVisible }) => {
+ProjectCard.displayName = 'ProjectCard';
+
+const ProjectsSection: React.FC<SectionProps> = React.memo(({ isVisible }) => {
   return (
     <section
       id="projects"
@@ -241,7 +303,9 @@ const ProjectsSection: React.FC<SectionProps> = ({ isVisible }) => {
       </div>
     </section>
   );
-};
+});
+
+ProjectsSection.displayName = 'ProjectsSection';
 
 export default ProjectsSection;
 
