@@ -1,47 +1,57 @@
-import React, { lazy, Suspense } from 'react';
-import { ChevronDown } from 'lucide-react';
-import type { SectionProps } from '../types';
-import ThreeScene from './ThreeScene';
+import React, { lazy, Suspense } from "react";
+import { ChevronDown } from "lucide-react";
+import type { SectionProps } from "../types";
+import LightweightBackground from "./LightweightBackground";
 
-const ProfileCard = lazy(() => import('./ProfileCard'));
+const ProfileCard = lazy(() => import("./ProfileCard"));
 
 interface HomeSectionProps extends SectionProps {
   scrollToSection: (sectionId: string) => void;
 }
 
-const HomeSection: React.FC<HomeSectionProps> = ({ darkMode, isVisible, scrollToSection }) => {
+const HomeSection: React.FC<HomeSectionProps> = ({
+  darkMode,
+  isVisible,
+  scrollToSection,
+}) => {
   return (
-    <section id="home" className="min-h-screen w-full flex items-center justify-center relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background-page via-background-page/50 to-background-page/50 transition-colors duration-500"></div>
-      
-      {/* 3D Scene */}
-      <ThreeScene darkMode={darkMode} />
-      
+    <section
+      id="home"
+      className="min-h-screen w-full flex items-center justify-center relative overflow-hidden"
+    >
+      {/* Lightweight Background */}
+      <LightweightBackground darkMode={darkMode} />
+
       <div className="relative z-10 w-full py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div
+            className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center transform transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+          >
             {/* Text Content */}
             <div className="text-center lg:text-left">
               <h1 className="text-5xl md:text-7xl font-bold mb-6 text-text-default">
-                Hi, I'm <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Zay Min Khant</span>
+                Hi, I'm{" "}
+                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  Zay Min Khant
+                </span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-text-secondary">
                 Crafting intelligent and elegant solutions
               </p>
               <p className="text-lg mb-12 max-w-2xl mx-auto lg:mx-0 text-text-secondary">
-                Full Stack Developer with 5+ years of experience building scalable web applications, 
-                AI-powered platforms, and modern user experiences.
+                Full Stack Developer with 5+ years of experience building
+                scalable web applications, AI-powered platforms, and modern user
+                experiences.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button
-                  onClick={() => scrollToSection('projects')}
+                  onClick={() => scrollToSection("projects")}
                   className="px-8 py-3 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-full font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl backdrop-blur-sm"
                 >
                   View My Work
                 </button>
                 <button
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => scrollToSection("contact")}
                   className="px-8 py-3 border-2 rounded-full font-semibold transform hover:scale-105 transition-all duration-200 backdrop-blur-sm border-border text-text-secondary hover:bg-background-card/50"
                 >
                   Get In Touch
@@ -51,7 +61,11 @@ const HomeSection: React.FC<HomeSectionProps> = ({ darkMode, isVisible, scrollTo
 
             {/* Profile Card */}
             <div className="hidden lg:block lg:max-w-md xl:max-w-lg mx-auto">
-              <Suspense fallback={<div className="w-full h-96 rounded-2xl bg-gradient-to-r from-blue-400/10 to-purple-500/10 animate-pulse" />}>
+              <Suspense
+                fallback={
+                  <div className="w-full h-96 rounded-2xl bg-gradient-to-r from-blue-400/10 to-purple-500/10 animate-pulse" />
+                }
+              >
                 {isVisible && (
                   <ProfileCard
                     name="Zay Min Khant"
@@ -65,7 +79,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({ darkMode, isVisible, scrollTo
                     showUserInfo={true}
                     enableTilt={true}
                     darkMode={darkMode}
-                    onContactClick={() => scrollToSection('contact')}
+                    onContactClick={() => scrollToSection("contact")}
                   />
                 )}
               </Suspense>
@@ -74,10 +88,12 @@ const HomeSection: React.FC<HomeSectionProps> = ({ darkMode, isVisible, scrollTo
         </div>
       </div>
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-        <ChevronDown className={`w-6 h-6 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`} />
+        <ChevronDown
+          className={`w-6 h-6 ${darkMode ? "text-gray-400" : "text-gray-600"}`}
+        />
       </div>
     </section>
   );
 };
 
-export default HomeSection; 
+export default HomeSection;

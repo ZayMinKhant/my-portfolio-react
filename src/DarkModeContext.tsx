@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import type { ReactNode } from 'react';
-import { DarkModeContext } from './DarkModeContextContext';
+import { useState, useEffect } from "react";
+import type { ReactNode } from "react";
+import { DarkModeContext } from "./DarkModeContextContext";
 
 export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
   const [darkMode, setDarkMode] = useState(true);
@@ -8,9 +8,11 @@ export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
   const toggleDarkMode = () => {
     setDarkMode((prev) => {
       if (!prev) {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove("light");
+        document.documentElement.classList.add("dark");
       } else {
-        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
       }
       return !prev;
     });
@@ -18,9 +20,11 @@ export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (darkMode) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
   }, [darkMode]);
 
@@ -29,4 +33,4 @@ export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </DarkModeContext.Provider>
   );
-}; 
+};

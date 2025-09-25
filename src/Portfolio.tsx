@@ -1,36 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { useDarkMode } from './useDarkMode';
-import Navbar from './components/Navbar';
-import HomeSection from './components/HomeSection';
-import AboutSection from './components/AboutSection';
-import ProjectsSection from './components/ProjectsSection';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
-import ClickSpark from './components/ClickSpark';
-import type { VisibilityState } from './types';
+import React, { useState, useEffect } from "react";
+import { useDarkMode } from "./useDarkMode";
+import Navbar from "./components/Navbar";
+import HomeSection from "./components/HomeSection";
+import AboutSection from "./components/AboutSection";
+import ProjectsSection from "./components/ProjectsSection";
+import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
+import ClickSpark from "./components/ClickSpark";
+import { ImageGalleryProvider } from "./components/ImageGallery";
+import type { VisibilityState } from "./types";
 
 const Portfolio: React.FC = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
-  const [activeSection, setActiveSection] = useState<string>('home');
+  const [activeSection, setActiveSection] = useState<string>("home");
   const [isVisible, setIsVisible] = useState<VisibilityState>({});
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsVisible(prev => ({
+          setIsVisible((prev) => ({
             ...prev,
-            [entry.target.id]: entry.isIntersecting
+            [entry.target.id]: entry.isIntersecting,
           }));
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
-    document.querySelectorAll('section[id]').forEach((section) => {
+    document.querySelectorAll("section[id]").forEach((section) => {
       observer.observe(section);
     });
 
@@ -41,17 +42,19 @@ const Portfolio: React.FC = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       const navbarHeight = 64; // 4rem or h-16
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - navbarHeight;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
 
   return (
+    <ImageGalleryProvider>
     <ClickSpark
       sparkColor="var(--color-accent)"
       sparkSize={6}
@@ -63,22 +66,32 @@ const Portfolio: React.FC = () => {
       <div className="min-h-screen w-full overflow-hidden relative">
         <div className="absolute inset-0 transition-colors duration-500 bg-background-page" />
         <div className="relative w-full">
-          <Navbar 
+          <Navbar
             darkMode={darkMode}
             toggleDarkMode={toggleDarkMode}
-            scrollToSection={scrollToSection} 
+            scrollToSection={scrollToSection}
             activeSection={activeSection}
           />
-          <div className="pt-16"> {/* Add padding top to account for fixed navbar */}
-            <HomeSection darkMode={darkMode} isVisible={isVisible.home} scrollToSection={scrollToSection} />
+          <div className="pt-16">
+            {" "}
+            {/* Add padding top to account for fixed navbar */}
+            <HomeSection
+              darkMode={darkMode}
+              isVisible={isVisible.home}
+              scrollToSection={scrollToSection}
+            />
             <AboutSection darkMode={darkMode} isVisible={isVisible.about} />
-            <ProjectsSection darkMode={darkMode} isVisible={isVisible.projects} />
+            <ProjectsSection
+              darkMode={darkMode}
+              isVisible={isVisible.projects}
+            />
             <ContactSection darkMode={darkMode} isVisible={isVisible.contact} />
-            <Footer/>
+            <Footer />
           </div>
         </div>
-                    </div>
+      </div>
     </ClickSpark>
+    </ImageGalleryProvider>
   );
 };
 

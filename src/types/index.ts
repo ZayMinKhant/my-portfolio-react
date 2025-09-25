@@ -10,6 +10,8 @@ export interface Project {
   tech: string[];
   color: string;
   features: string[];
+  demoUrl?: string;
+  role: string;
 }
 
 export interface SectionProps {
@@ -27,4 +29,4 @@ export interface WorkExperience {
   duration: string;
   type: string;
   description: string[];
-} 
+}

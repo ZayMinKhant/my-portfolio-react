@@ -22,13 +22,14 @@ interface ProfileCardProps {
 }
 
 const DEFAULT_BEHIND_GRADIENT = {
-  light: "radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#00ffaac4 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#00c1ffff 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#c137ffff 0%,#07c6ffff 40%,#07c6ffff 60%,#c137ffff 100%)",
-  dark: "radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#4a00ff 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#2400c1 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#6137c1 0%,#074ac6 40%,#074ac6 60%,#6137c1 100%)"
+  light:
+    "radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#00ffaac4 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#00c1ffff 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#c137ffff 0%,#07c6ffff 40%,#07c6ffff 60%,#c137ffff 100%)",
+  dark: "radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#4a00ff 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#2400c1 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#6137c1 0%,#074ac6 40%,#074ac6 60%,#6137c1 100%)",
 };
 
 const DEFAULT_INNER_GRADIENT = {
   light: "linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)",
-  dark: "linear-gradient(145deg,#2d1f36 0%,#1a3b4d 100%)"
+  dark: "linear-gradient(145deg,#2d1f36 0%,#1a3b4d 100%)",
 };
 
 const ANIMATION_CONFIG = {
@@ -50,7 +51,7 @@ const adjust = (
   fromMin: number,
   fromMax: number,
   toMin: number,
-  toMax: number
+  toMax: number,
 ): number =>
   round(toMin + ((toMax - toMin) * (value - fromMin)) / (fromMax - fromMin));
 
@@ -90,7 +91,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       offsetX: number,
       offsetY: number,
       card: HTMLElement,
-      wrap: HTMLElement
+      wrap: HTMLElement,
     ) => {
       const width = card.clientWidth;
       const height = card.clientHeight;
@@ -120,7 +121,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       startX: number,
       startY: number,
       card: HTMLElement,
-      wrap: HTMLElement
+      wrap: HTMLElement,
     ) => {
       const startTime = performance.now();
       const targetX = wrap.clientWidth / 2;
@@ -170,7 +171,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       // Store current pointer position
       lastPointerPosition.current = {
         x: event.clientX - card.getBoundingClientRect().left,
-        y: event.clientY - card.getBoundingClientRect().top
+        y: event.clientY - card.getBoundingClientRect().top,
       };
 
       // Throttle updates
@@ -180,13 +181,13 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             lastPointerPosition.current.x,
             lastPointerPosition.current.y,
             card,
-            wrap
+            wrap,
           );
         });
         lastUpdateTime.current = now;
       }
     },
-    [animationHandlers]
+    [animationHandlers],
   );
 
   const handlePointerEnter = useCallback(() => {
@@ -212,12 +213,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
         event.offsetX,
         event.offsetY,
         card,
-        wrap
+        wrap,
       );
       wrap.classList.remove("active");
       card.classList.remove("active");
     },
-    [animationHandlers]
+    [animationHandlers],
   );
 
   useEffect(() => {
@@ -245,7 +246,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       initialX,
       initialY,
       card,
-      wrap
+      wrap,
     );
 
     return () => {
@@ -268,16 +269,25 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
         "--icon": iconUrl ? `url(${iconUrl})` : "none",
         "--grain": grainUrl ? `url(${grainUrl})` : "none",
         "--behind-gradient": showBehindGradient
-          ? (behindGradient ?? DEFAULT_BEHIND_GRADIENT[darkMode ? 'dark' : 'light'])
+          ? (behindGradient ??
+            DEFAULT_BEHIND_GRADIENT[darkMode ? "dark" : "light"])
           : "none",
-        "--inner-gradient": innerGradient ?? DEFAULT_INNER_GRADIENT[darkMode ? 'dark' : 'light'],
+        "--inner-gradient":
+          innerGradient ?? DEFAULT_INNER_GRADIENT[darkMode ? "dark" : "light"],
         "--sunpillar-opacity": darkMode ? "0.7" : "1",
         "--card-base-opacity": darkMode ? "0.9" : "0.8",
         "--mask-size": "contain",
         "--mask-position": "center",
         "--mask-repeat": "no-repeat",
       }) as React.CSSProperties,
-    [iconUrl, grainUrl, showBehindGradient, behindGradient, innerGradient, darkMode]
+    [
+      iconUrl,
+      grainUrl,
+      showBehindGradient,
+      behindGradient,
+      innerGradient,
+      darkMode,
+    ],
   );
 
   const handleContactClick = useCallback(() => {
@@ -287,10 +297,10 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   return (
     <div
       ref={wrapRef}
-      className={`pc-card-wrapper ${darkMode ? 'dark' : ''} ${className}`.trim()}
+      className={`pc-card-wrapper ${darkMode ? "dark" : ""} ${className}`.trim()}
       style={{
         ...cardStyle,
-        transform: 'translateZ(0)', // Enable hardware acceleration
+        transform: "translateZ(0)", // Enable hardware acceleration
       }}
     >
       <section ref={cardRef} className="pc-card">
@@ -305,7 +315,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               loading="lazy"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                console.error('Failed to load avatar:', avatarUrl);
+                console.error("Failed to load avatar:", avatarUrl);
                 target.style.display = "none";
               }}
             />
@@ -319,7 +329,10 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                       loading="lazy"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        console.error('Failed to load mini avatar:', miniAvatarUrl || avatarUrl);
+                        console.error(
+                          "Failed to load mini avatar:",
+                          miniAvatarUrl || avatarUrl,
+                        );
                         target.style.opacity = "0.5";
                         target.src = avatarUrl;
                       }}
@@ -356,4 +369,4 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 
 const ProfileCard = React.memo(ProfileCardComponent);
 
-export default ProfileCard; 
+export default ProfileCard;
