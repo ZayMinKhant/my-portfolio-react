@@ -53,7 +53,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             </button>
           ))}
           <a
-            href="https://www.linkedin.com/in/zayminkhant/"
+            href="https://www.linkedin.com/in/zay-min-khant/"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2 p-2 rounded-full transition-all duration-200 bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg shadow-lg hover:scale-110 hover:bg-white/80 dark:hover:bg-gray-800/80 text-text-default cursor-pointer"
@@ -65,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
         {/* Mobile Navigation Button */}
         <div className="flex md:hidden items-center space-x-2">
           <a
-            href="https://www.linkedin.com/in/zayminkhant/"
+            href="https://www.linkedin.com/in/zay-min-khant/"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 mr-2 rounded-full transition-all duration-200 bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg shadow-lg hover:scale-110 hover:bg-white/80 dark:hover:bg-gray-800/80 text-text-default cursor-pointer"
