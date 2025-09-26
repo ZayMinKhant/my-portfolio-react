@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Mail, MapPin, Github, Linkedin, Send } from "lucide-react";
 import type { SectionProps } from "../types";
+import { contactInfo, contactFormConfig } from "../data";
 
 const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
   const [formData, setFormData] = useState({
@@ -28,8 +29,7 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
     }
 
     // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
+    if (!contactFormConfig.emailRegex.test(formData.email)) {
       return;
     }
 
@@ -39,7 +39,7 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
       // Create mailto link with form data
       const subject = `Portfolio Contact from ${formData.name}`;
       const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
-      const mailtoLink = `mailto:zayminkhant.dev@email.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoLink = `mailto:${contactInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 
       // Try to open default email client
@@ -51,7 +51,7 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
       setTimeout(() => {
         setFormData({ name: "", email: "", message: "" });
         setIsSubmitting(false);
-      }, 500);
+      }, contactFormConfig.resetDelay);
     } catch (error) {
       console.error("Error opening email client:", error);
       setIsSubmitting(false);
@@ -90,7 +90,7 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
                   <div>
                     <p className="font-semibold text-text-default">Email</p>
                     <p className="text-sm text-text-secondary">
-                      zayminkhant.dev@email.com
+                      {contactInfo.email}
                     </p>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
                   <div>
                     <p className="font-semibold text-text-default">Location</p>
                     <p className="text-sm text-text-secondary">
-                      Bangkok, Thailand
+                      {contactInfo.location}
                     </p>
                   </div>
                 </div>
@@ -110,10 +110,12 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
 
               <div className="flex gap-4 mt-8">
                 <button className="p-3 rounded-full transition-all duration-200 bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg border border-white/20 dark:border-gray-700/30 shadow-xl hover:scale-110 hover:bg-white/60 dark:hover:bg-gray-900/60 text-text-secondary hover:text-text-default">
-                  <Github className="w-5 h-5" />
+                  <a href={contactInfo.github} target="_blank" rel="noopener noreferrer">
+                    <Github className="w-5 h-5" />
+                  </a>
                 </button>
                 <a
-                  href="https://www.linkedin.com/in/zay-min-khant/"
+                  href={contactInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full transition-all duration-200 bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg border border-white/20 dark:border-gray-700/30 shadow-xl hover:scale-110 hover:bg-white/60 dark:hover:bg-gray-900/60 text-text-secondary hover:text-text-default"

@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { ChevronDown } from "lucide-react";
 import type { SectionProps } from "../types";
 import LightweightBackground from "./LightweightBackground";
+import { homeContent } from "../data";
 
 const ProfileCard = lazy(() => import("./ProfileCard"));
 
@@ -32,29 +33,27 @@ const HomeSection: React.FC<HomeSectionProps> = ({
               <h1 className="text-5xl md:text-7xl font-bold mb-6 text-text-default">
                 Hi, I'm{" "}
                 <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Zay Min Khant
+                  {homeContent.name}
                 </span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-text-secondary">
-                Crafting intelligent and elegant solutions
+                {homeContent.title}
               </p>
               <p className="text-lg mb-12 max-w-2xl mx-auto lg:mx-0 text-text-secondary">
-                Full Stack Developer with 5+ years of experience building
-                scalable web applications, AI-powered platforms, and modern user
-                experiences.
+                {homeContent.subtitle}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button
-                  onClick={() => scrollToSection("projects")}
+                  onClick={() => scrollToSection(homeContent.ctaButtons.primary.action)}
                   className="px-8 py-3 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-full font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl backdrop-blur-sm"
                 >
-                  View My Work
+                  {homeContent.ctaButtons.primary.text}
                 </button>
                 <button
-                  onClick={() => scrollToSection("contact")}
+                  onClick={() => scrollToSection(homeContent.ctaButtons.secondary.action)}
                   className="px-8 py-3 border-2 rounded-full font-semibold transform hover:scale-105 transition-all duration-200 backdrop-blur-sm border-border text-text-secondary hover:bg-background-card/50"
                 >
-                  Get In Touch
+                  {homeContent.ctaButtons.secondary.text}
                 </button>
               </div>
             </div>
