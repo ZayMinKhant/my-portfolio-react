@@ -37,6 +37,15 @@ const ProjectCard: React.FC<{ project: Project }> = React.memo(({ project }) => 
           </span>
         </div>
 
+        {/* Image Count Badge */}
+        {images.length > 0 && (
+          <div className="absolute top-3 right-3">
+            <span className="text-xs font-semibold bg-black/70 text-white px-2 py-1 rounded-md backdrop-blur-sm">
+              {images.length} {images.length === 1 ? 'image' : 'images'}
+            </span>
+          </div>
+        )}
+
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
           <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
