@@ -9,8 +9,8 @@ const LightweightBackground: React.FC<LightweightBackgroundProps> = ({
 }) => {
   return (
     <div
-      className="fixed inset-0 w-full h-full pointer-events-none select-none"
-      style={{ zIndex: 0 }}
+      className="absolute inset-0 w-full h-full pointer-events-none select-none"
+      style={{ zIndex: -1 }}
     >
       {/* Gradient Background */}
       <div

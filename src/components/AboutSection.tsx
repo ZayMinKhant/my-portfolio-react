@@ -89,7 +89,7 @@ const AboutSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
             </div>
 
             {/* Experience & Skills */}
-            <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-12 max-w-[calc(100vw-12px)]  sm:max-w-[calc(100vw-64px)]">
               <WorkExperienceSection workHistory={workHistory} />
               {/* Skills */}
               <div>

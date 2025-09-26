@@ -6,9 +6,9 @@ import AboutSection from "./components/AboutSection";
 import ProjectsSection from "./components/ProjectsSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
-import ClickSpark from "./components/ClickSpark";
 import { ImageGalleryProvider } from "./components/ImageGallery";
 import type { VisibilityState } from "./types";
+import LightweightBackground from "./components/LightweightBackground";
 
 const Portfolio: React.FC = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
@@ -55,16 +55,10 @@ const Portfolio: React.FC = () => {
 
   return (
     <ImageGalleryProvider>
-    <ClickSpark
-      sparkColor="var(--color-accent)"
-      sparkSize={4}
-      sparkRadius={20}
-      sparkCount={6}
-      duration={400}
-      extraScale={1.1}
-    >
-      <div className="min-h-screen w-full overflow-hidden relative">
+      <div className="min-h-screen w-full relative">
         <div className="absolute inset-0 transition-colors duration-500 bg-background-page" />
+      <LightweightBackground darkMode={darkMode} />
+
         <div className="relative w-full">
           <Navbar
             darkMode={darkMode}
@@ -90,7 +84,6 @@ const Portfolio: React.FC = () => {
           </div>
         </div>
       </div>
-    </ClickSpark>
     </ImageGalleryProvider>
   );
 };

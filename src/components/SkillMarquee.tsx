@@ -6,29 +6,14 @@ interface SkillMarqueeProps {
   darkMode: boolean;
 }
 
-const SkillMarquee: React.FC<SkillMarqueeProps> = ({ skills, darkMode }) => {
+const SkillMarquee: React.FC<SkillMarqueeProps> = ({ skills }) => {
   // Split skills into two rows
   const half = Math.ceil(skills.length / 2);
   const row1 = skills.slice(0, half);
   const row2 = skills.slice(half);
 
-  const fadeGradient = (side: "left" | "right") =>
-    `linear-gradient(to ${side === "left" ? "right" : "left"}, ${
-      darkMode ? "rgba(17,24,39,1)" : "rgba(249,250,251,1)"
-    } 0%, transparent 100%)`;
-
   return (
     <div className="relative w-full max-w-7xl mx-auto py-4 sm:py-8">
-      {/* Fade edges */}
-      <div
-        className="pointer-events-none absolute top-0 left-0 h-full w-8 sm:w-20 z-10"
-        style={{ background: fadeGradient("left") }}
-      />
-      <div
-        className="pointer-events-none absolute top-0 right-0 h-full w-8 sm:w-20 z-10"
-        style={{ background: fadeGradient("right") }}
-      />
-
       {/* First Row - Left to Right */}
       <div className="overflow-hidden mb-4 sm:mb-6">
         <div className="flex animate-marquee gap-2 sm:gap-4">

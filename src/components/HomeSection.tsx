@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { ChevronDown } from "lucide-react";
 import type { SectionProps } from "../types";
-import LightweightBackground from "./LightweightBackground";
 import { homeContent } from "../data";
 
 const ProfileCard = lazy(() => import("./ProfileCard"));
@@ -20,9 +19,6 @@ const HomeSection: React.FC<HomeSectionProps> = ({
       id="home"
       className="min-h-screen w-full flex items-center justify-center relative overflow-hidden"
     >
-      {/* Lightweight Background */}
-      <LightweightBackground darkMode={darkMode} />
-
       <div className="relative z-10 w-full py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div

@@ -145,7 +145,7 @@ const WorkExperienceSection: React.FC<WorkExperienceSectionProps> = ({
         </div>
 
         {/* Cards column */}
-        <div className="space-y-6 sm:space-y-8 flex-1 w-[calc(100vw_-_7rem)]">
+        <div className="space-y-6 sm:space-y-8 flex-1 max-w-[calc(100%_-_40px)] w-full sm:max-w-[calc(100%_-_88px)]">
           {workHistory.map((job, idx) => {
             const isActive = activeCard === idx;
             const timelineColor = getTimelineColor(idx);

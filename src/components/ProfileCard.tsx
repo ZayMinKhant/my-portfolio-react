@@ -67,7 +67,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   showBehindGradient = true,
   className = "",
   enableTilt = true,
-  miniAvatarUrl,
+  miniAvatarUrl = "/logo.svg",
   name = "Javi A. Torres",
   title = "Software Engineer",
   handle = "javicodes",

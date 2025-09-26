@@ -154,6 +154,7 @@
 .pc-shine::after {
   --space: 5%;
   --angle: -45deg;
+  rotate: -45deg;
   transform: translate3d(0, 0, 1px);
   overflow: hidden;
   z-index: 3;

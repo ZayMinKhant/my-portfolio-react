@@ -75,14 +75,24 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
   // Prevent body scroll when modal is open
   React.useEffect(() => {
     if (galleryState.isOpen) {
+      // Store current scroll position
+      const scrollY = window.scrollY;
+      
+      // Apply styles to prevent scrolling
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+      
+      return () => {
+        // Restore scroll position and styles
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollY);
+      };
     }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
   }, [galleryState.isOpen]);
 
   return (
