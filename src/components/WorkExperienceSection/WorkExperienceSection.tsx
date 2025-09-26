@@ -11,7 +11,6 @@ const TIMELINE_COLORS = [
 ];
 
 const MEASUREMENT_DELAY = 200;
-const MAX_MEASUREMENT_ATTEMPTS = 20;
 
 interface WorkExperienceSectionProps {
   workHistory: WorkExperience[];

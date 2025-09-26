@@ -10,7 +10,7 @@ const ProjectCard: React.FC<{ project: Project }> = React.memo(({ project }) => 
 
   const handleImageClick = () => {
     if (images.length > 0) {
-      openGallery(images, 0);
+      openGallery(images, project.title);
     }
   };
 

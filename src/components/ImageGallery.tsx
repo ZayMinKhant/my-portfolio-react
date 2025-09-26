@@ -95,6 +95,13 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
           <div className="relative w-full h-full max-w-7xl max-h-full flex flex-col">
             {/* Header */}
             <div className="flex items-center justify-between p-2 sm:p-4 mb-2">
+              {/* Title */}
+              <div className="px-3 py-2 rounded-full bg-black/50 backdrop-blur-sm border border-white/20">
+                <h3 className="text-white text-xs sm:text-sm font-medium truncate max-w-[200px] sm:max-w-none">
+                  {galleryState.title}
+                </h3>
+              </div>
+
               {/* Close button */}
               <button
                 onClick={closeGallery}
