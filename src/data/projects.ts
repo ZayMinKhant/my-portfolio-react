@@ -59,6 +59,59 @@ export const projectImages = {
 
 export const projects: Project[] = [
   {
+    title: "Connect Portal",
+    description:
+      "Comprehensive Human Resource Management System with integrated employee check-in/checkout functionality, designed to streamline organizational operations and enhance workplace efficiency.",
+    tech: ["Angular 11", "Flutter", "Python", "DynamoDB"],
+    color: "from-emerald-400 to-green-500",
+    features: [
+      "Employee posts and communication",
+      "Check-in/checkout system",
+      "Organization member management",
+      "Leave request and approval workflow",
+      "Admin dashboard and analytics",
+      "Monthly reporting system",
+    ],
+    demoUrl: "https://www.connectportal.cloud/",
+    role: "Full Stack Developer",
+  },
+  {
+    title: "KHub",
+    description:
+      "Comprehensive online learning platform featuring dual interfaces for learners and instructors (Studio), designed to facilitate seamless educational experiences with integrated course management and interactive learning tools.",
+    tech: ["Angular 13", "Flutter", "Python", "DynamoDB"],
+    color: "from-orange-400 to-red-500",
+    features: [
+      "View and enroll in courses",
+      "Payment integration system",
+      "Interactive assignments",
+      "Automated quizzes and assessments",
+      "Discussion forums",
+      "Instructor Studio dashboard",
+      "Course creation tools",
+      "Student progress tracking",
+    ],
+    role: "Full Stack Developer",
+    demoUrl: "https://www.khub.cloud/",
+  },
+  {
+    title: "KHub Studio",
+    description:
+      "Instructor-focused interface for KHub platform, providing comprehensive course management, student analytics, and content creation tools for educators.",
+    tech: ["Angular 13", "Flutter", "Python", "DynamoDB"],
+    color: "from-red-400 to-pink-500",
+    features: [
+      "Course creation and management",
+      "Student enrollment tracking",
+      "Assignment and quiz creation",
+      "Analytics dashboard",
+      "Content upload system",
+      "Student communication tools",
+    ],
+    role: "Full Stack Developer",
+    demoUrl: "https://studio.khub.cloud/",
+  },
+  {
     title: "GenAI Insights Portal",
     description:
       "Generative AI-Powered Knowledge Assistant with real-time insights, vector search, and source citations.",
@@ -113,58 +166,5 @@ export const projects: Project[] = [
       "AI categorization",
     ],
     role: "Full Stack Developer",
-  },
-  {
-    title: "Connect Portal",
-    description:
-      "Comprehensive Human Resource Management System with integrated employee check-in/checkout functionality, designed to streamline organizational operations and enhance workplace efficiency.",
-    tech: ["Angular 11", "Flutter", "Python", "DynamoDB"],
-    color: "from-emerald-400 to-green-500",
-    features: [
-      "Employee posts and communication",
-      "Check-in/checkout system",
-      "Organization member management",
-      "Leave request and approval workflow",
-      "Admin dashboard and analytics",
-      "Monthly reporting system",
-    ],
-    demoUrl: "https://www.connectportal.cloud/",
-    role: "Full Stack Developer",
-  },
-  {
-    title: "KHub",
-    description:
-      "Comprehensive online learning platform featuring dual interfaces for learners and instructors (Studio), designed to facilitate seamless educational experiences with integrated course management and interactive learning tools.",
-    tech: ["Angular 13", "Flutter", "Python", "DynamoDB"],
-    color: "from-orange-400 to-red-500",
-    features: [
-      "View and enroll in courses",
-      "Payment integration system",
-      "Interactive assignments",
-      "Automated quizzes and assessments",
-      "Discussion forums",
-      "Instructor Studio dashboard",
-      "Course creation tools",
-      "Student progress tracking",
-    ],
-    role: "Full Stack Developer",
-    demoUrl: "https://www.khub.cloud/",
-  },
-  {
-    title: "KHub Studio",
-    description:
-      "Instructor-focused interface for KHub platform, providing comprehensive course management, student analytics, and content creation tools for educators.",
-    tech: ["Angular 13", "Flutter", "Python", "DynamoDB"],
-    color: "from-red-400 to-pink-500",
-    features: [
-      "Course creation and management",
-      "Student enrollment tracking",
-      "Assignment and quiz creation",
-      "Analytics dashboard",
-      "Content upload system",
-      "Student communication tools",
-    ],
-    role: "Full Stack Developer",
-    demoUrl: "https://studio.khub.cloud/",
   },
 ];

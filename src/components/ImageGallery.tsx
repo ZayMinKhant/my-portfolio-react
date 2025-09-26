@@ -91,24 +91,22 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
       
       {/* Global Image Gallery Modal */}
       {galleryState.isOpen && (
-        <div className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="relative max-w-7xl max-h-full w-full">
-            {/* Close button */}
-            <button
-              onClick={closeGallery}
-              className="absolute top-4 right-4 z-10 p-3 rounded-full bg-black/50 hover:bg-black/70 transition-colors backdrop-blur-sm border border-white/20 hover:border-white/30"
-              aria-label="Close gallery"
-            >
-              <X className="w-6 h-6 text-white" />
-            </button>
-
-            {/* Title */}
-            <div className="absolute top-4 left-4 z-10 px-4 py-2 rounded-full bg-black/50 backdrop-blur-sm border border-white/20">
-              <h3 className="text-white text-sm font-medium">{galleryState.title}</h3>
+        <div className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+          <div className="relative w-full h-full max-w-7xl max-h-full flex flex-col">
+            {/* Header */}
+            <div className="flex items-center justify-between p-2 sm:p-4 mb-2">
+              {/* Close button */}
+              <button
+                onClick={closeGallery}
+                className="p-2 sm:p-3 rounded-full bg-black/50 hover:bg-black/70 transition-colors backdrop-blur-sm border border-white/20 hover:border-white/30"
+                aria-label="Close gallery"
+              >
+                <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </button>
             </div>
 
-            {/* Main Image */}
-            <div className="flex items-center justify-center h-full">
+            {/* Main Image Container */}
+            <div className="flex-1 flex items-center justify-center relative min-h-0">
               <img
                 src={galleryState.images[galleryState.currentIndex]}
                 alt={`${galleryState.title} - Image ${galleryState.currentIndex + 1}`}
@@ -116,45 +114,45 @@ export const ImageGalleryProvider: React.FC<{ children: ReactNode }> = ({ childr
                 loading="eager"
                 decoding="async"
               />
+
+              {/* Navigation Controls */}
+              {galleryState.images.length > 1 && (
+                <>
+                  <button
+                    onClick={prevImage}
+                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-4 rounded-full bg-black/50 hover:bg-black/70 transition-colors backdrop-blur-sm border border-white/20 hover:border-white/30 disabled:opacity-50"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  </button>
+                  
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-4 rounded-full bg-black/50 hover:bg-black/70 transition-colors backdrop-blur-sm border border-white/20 hover:border-white/30 disabled:opacity-50"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  </button>
+                </>
+              )}
             </div>
 
-            {/* Navigation Controls */}
+            {/* Footer */}
             {galleryState.images.length > 1 && (
-              <>
-                <button
-                  onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-black/50 hover:bg-black/70 transition-colors backdrop-blur-sm border border-white/20 hover:border-white/30 disabled:opacity-50"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="w-6 h-6 text-white" />
-                </button>
-                
-                <button
-                  onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-black/50 hover:bg-black/70 transition-colors backdrop-blur-sm border border-white/20 hover:border-white/30 disabled:opacity-50"
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="w-6 h-6 text-white" />
-                </button>
-              </>
-            )}
-
-            {/* Image Counter and Navigation Dots */}
-            {galleryState.images.length > 1 && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+              <div className="flex flex-col items-center gap-2 sm:gap-3 p-2 sm:p-4">
                 {/* Counter */}
-                <div className="px-4 py-2 rounded-full bg-black/50 text-white text-sm backdrop-blur-sm border border-white/20">
+                <div className="px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-black/50 text-white text-xs sm:text-sm backdrop-blur-sm border border-white/20">
                   {galleryState.currentIndex + 1} / {galleryState.images.length}
                 </div>
                 
                 {/* Navigation Dots */}
                 {galleryState.images.length <= 10 && (
-                  <div className="flex gap-2">
+                  <div className="flex gap-1 sm:gap-2">
                     {galleryState.images.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setGalleryState(prev => ({ ...prev, currentIndex: index }))}
-                        className={`w-3 h-3 rounded-full transition-colors border ${
+                        className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors border ${
                           index === galleryState.currentIndex
                             ? 'bg-white border-white'
                             : 'bg-white/30 border-white/50 hover:bg-white/50 hover:border-white/70'
