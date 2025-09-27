@@ -9,7 +9,7 @@ export const contactInfo: ContactInfo = {
   email: "zayminkhant.dev@email.com",
   location: "Bangkok, Thailand",
   github: "https://github.com/zayminkhant",
-  linkedin: "https://linkedin.com/in/zayminkhant",
+  linkedin: "https://www.linkedin.com/in/zay-min-khant/",
 };
 
 export const contactFormConfig = {
