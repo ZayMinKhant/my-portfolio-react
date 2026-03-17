@@ -84,8 +84,8 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
 
               <div className="space-y-4">
                 <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg border border-white/20 dark:border-gray-700/30 shadow-xl hover:scale-[1.02] transition-all duration-300">
-                  <div className="p-3 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full">
-                    <Mail className="w-5 h-5 text-white" />
+                  <div className="brand-cta-badge p-3 rounded-full">
+                    <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="font-semibold text-text-default">Email</p>
@@ -96,8 +96,8 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
                 </div>
 
                 <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg border border-white/20 dark:border-gray-700/30 shadow-xl hover:scale-[1.02] transition-all duration-300">
-                  <div className="p-3 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full">
-                    <MapPin className="w-5 h-5 text-white" />
+                  <div className="brand-cta-badge p-3 rounded-full">
+                    <MapPin className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="font-semibold text-text-default">Location</p>
@@ -109,16 +109,21 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
               </div>
 
               <div className="flex gap-4 mt-8">
-                <button className="p-3 rounded-full transition-all duration-200 bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg border border-white/20 dark:border-gray-700/30 shadow-xl hover:scale-110 hover:bg-white/60 dark:hover:bg-gray-900/60 text-text-secondary hover:text-text-default">
-                  <a href={contactInfo.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-5 h-5" />
-                  </a>
-                </button>
+                <a
+                  href={contactInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="brand-cta-secondary p-3 rounded-full transition-all duration-200 hover:scale-110"
+                  aria-label="GitHub"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
                 <a
                   href={contactInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full transition-all duration-200 bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg border border-white/20 dark:border-gray-700/30 shadow-xl hover:scale-110 hover:bg-white/60 dark:hover:bg-gray-900/60 text-text-secondary hover:text-text-default"
+                  className="brand-cta-secondary p-3 rounded-full transition-all duration-200 hover:scale-110"
+                  aria-label="LinkedIn"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
@@ -136,7 +141,7 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border transition-colors duration-200 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border-white/30 dark:border-gray-600/30 text-text-default focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20"
+                    className="w-full px-4 py-3 rounded-lg border transition-colors duration-200 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border-white/30 dark:border-gray-600/30 text-text-default focus:border-[var(--color-cta-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cta-soft)]"
                     placeholder="Your name"
                     required
                   />
@@ -151,7 +156,7 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border transition-colors duration-200 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border-white/30 dark:border-gray-600/30 text-text-default focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20"
+                    className="w-full px-4 py-3 rounded-lg border transition-colors duration-200 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border-white/30 dark:border-gray-600/30 text-text-default focus:border-[var(--color-cta-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cta-soft)]"
                     placeholder="your@email.com"
                     required
                   />
@@ -166,7 +171,7 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg border transition-colors duration-200 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border-white/30 dark:border-gray-600/30 text-text-default focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 resize-none"
+                    className="w-full px-4 py-3 rounded-lg border transition-colors duration-200 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border-white/30 dark:border-gray-600/30 text-text-default focus:border-[var(--color-cta-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cta-soft)] resize-none"
                     placeholder="Tell me about your project..."
                     required
                   />
@@ -186,7 +191,7 @@ const ContactSection: React.FC<SectionProps> = ({ isVisible }) => {
                       return;
                     }
                   }}
-                  className="w-full px-6 py-3 bg-white/80 dark:bg-gray-700/80 backdrop-blur-lg border-2 border-white/50 dark:border-gray-500/50 text-text-default font-semibold transform hover:scale-105 transition-all duration-200 shadow-xl hover:shadow-2xl hover:bg-white/90 dark:hover:bg-gray-700/90 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="brand-cta w-full px-6 py-3 backdrop-blur-lg font-semibold transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-5 h-5" />
                   {isSubmitting ? "Opening Email..." : "Send Message"}

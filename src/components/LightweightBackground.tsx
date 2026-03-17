@@ -1,29 +1,17 @@
 import React from "react";
 
-interface LightweightBackgroundProps {
-  darkMode: boolean;
-}
-
-const LightweightBackground: React.FC<LightweightBackgroundProps> = ({
-  darkMode,
-}) => {
+const LightweightBackground: React.FC = () => {
   return (
     <div
       className="absolute inset-0 w-full h-full pointer-events-none select-none"
       style={{ zIndex: -1 }}
     >
       {/* Gradient Background */}
-      <div
-        className={`absolute inset-0 transition-opacity duration-1000 ${
-          darkMode
-            ? "bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950"
-            : "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50"
-        }`}
-      />
+      <div className="absolute inset-0 transition-opacity duration-1000 bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950" />
 
       {/* Animated Dots Pattern */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className={`floating-dots ${darkMode ? "dark" : "light"}`}>
+        <div className="floating-dots dark">
           {/* Generate fewer, simpler dots */}
           {Array.from({ length: 50 }, (_, i) => (
             <div
@@ -42,13 +30,11 @@ const LightweightBackground: React.FC<LightweightBackgroundProps> = ({
 
       {/* Subtle Grid Pattern */}
       <div
-        className={`absolute inset-0 opacity-30 ${
-          darkMode ? "grid-dark" : "grid-light"
-        }`}
+        className="absolute inset-0 opacity-30 grid-dark"
         style={{
           backgroundImage: `
-            linear-gradient(${darkMode ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)"} 1px, transparent 1px),
-            linear-gradient(90deg, ${darkMode ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)"} 1px, transparent 1px)
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
           `,
           backgroundSize: "50px 50px",
         }}
@@ -56,7 +42,7 @@ const LightweightBackground: React.FC<LightweightBackgroundProps> = ({
 
       {/* Floating Code Symbols */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className={`floating-symbols ${darkMode ? "dark" : "light"}`}>
+        <div className="floating-symbols dark">
           {["{}", "</>", "()", "[]", "=>", "!=", "++", "--"].map(
             (symbol, i) => (
               <div

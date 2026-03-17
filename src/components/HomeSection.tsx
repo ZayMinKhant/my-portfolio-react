@@ -28,7 +28,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({
             <div className="text-center lg:text-left">
               <h1 className="text-5xl md:text-7xl font-bold mb-6 text-text-default">
                 Hi, I'm{" "}
-                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                <span className="brand-highlight-text">
                   {homeContent.name}
                 </span>
               </h1>
@@ -41,13 +41,13 @@ const HomeSection: React.FC<HomeSectionProps> = ({
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button
                   onClick={() => scrollToSection(homeContent.ctaButtons.primary.action)}
-                  className="px-8 py-3 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-full font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl backdrop-blur-sm"
+                  className="brand-cta px-8 py-3 rounded-full font-semibold transform hover:scale-105 transition-all duration-200 backdrop-blur-sm"
                 >
                   {homeContent.ctaButtons.primary.text}
                 </button>
                 <button
                   onClick={() => scrollToSection(homeContent.ctaButtons.secondary.action)}
-                  className="px-8 py-3 border-2 rounded-full font-semibold transform hover:scale-105 transition-all duration-200 backdrop-blur-sm border-border text-text-secondary hover:bg-background-card/50"
+                  className="brand-cta-secondary px-8 py-3 rounded-full font-semibold transform hover:scale-105 transition-all duration-200 backdrop-blur-sm"
                 >
                   {homeContent.ctaButtons.secondary.text}
                 </button>

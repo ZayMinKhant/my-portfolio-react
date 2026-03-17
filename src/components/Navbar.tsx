@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Menu, X, Linkedin } from "lucide-react";
 
 interface NavbarProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
   scrollToSection: (sectionId: string) => void;
   activeSection: string;
 }
@@ -32,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
       }}
     >
       <div className="flex justify-between items-center h-16 px-6">
-        <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent tracking-wider select-none">
+        <div className="brand-highlight-text text-2xl font-bold tracking-wider select-none">
           ZMK
         </div>
         {/* Desktop Navigation */}

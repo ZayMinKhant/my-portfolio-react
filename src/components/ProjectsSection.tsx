@@ -59,7 +59,7 @@ const ProjectCard: React.FC<{ project: Project }> = React.memo(({ project }) => 
       {/* Project Content */}
       <div className="p-6">
         <div className="flex items-start justify-between mb-3">
-          <h3 className="text-xl font-bold text-text-default group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
+          <h3 className="brand-highlight-text-hover text-xl font-bold text-text-default transition-all duration-300">
             {project.title}
           </h3>
           {project.demoUrl && (

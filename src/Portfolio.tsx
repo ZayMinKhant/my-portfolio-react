@@ -11,7 +11,7 @@ import type { VisibilityState } from "./types";
 import LightweightBackground from "./components/LightweightBackground";
 
 const Portfolio: React.FC = () => {
-  const { darkMode, toggleDarkMode } = useDarkMode();
+  const { darkMode } = useDarkMode();
   const [activeSection, setActiveSection] = useState<string>("home");
   const [isVisible, setIsVisible] = useState<VisibilityState>({});
 
@@ -57,12 +57,10 @@ const Portfolio: React.FC = () => {
     <ImageGalleryProvider>
       <div className="min-h-screen w-full relative">
         <div className="absolute inset-0 transition-colors duration-500 bg-background-page" />
-      <LightweightBackground darkMode={darkMode} />
+      <LightweightBackground />
 
         <div className="relative w-full">
           <Navbar
-            darkMode={darkMode}
-            toggleDarkMode={toggleDarkMode}
             scrollToSection={scrollToSection}
             activeSection={activeSection}
           />

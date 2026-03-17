@@ -15,7 +15,7 @@ const AboutSection: React.FC<SectionProps> = ({ darkMode, isVisible }) => {
         <div
           className={`transform transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
         >
-          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="brand-highlight-text text-4xl font-bold text-center mb-16">
             About Me
           </h2>
 

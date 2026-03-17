@@ -170,7 +170,7 @@ const WorkExperienceSection: React.FC<WorkExperienceSectionProps> = ({
                     <h4
                       className={`text-base sm:text-xl font-bold transition-colors duration-300 leading-tight ${
                         isActive
-                          ? "text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text"
+                          ? "brand-highlight-text"
                           : "text-text-default"
                       }`}
                     >
